@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Language Selection</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        button { padding: 10px 20px; margin: 10px; font-size: 16px; }
+        img { width: 100px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <img src="C:\Users\Bishope\Pictures\DefaultCPCloudAppAvatar.png" alt="Avatar">
+    <h1>Select Report Language</h1>
+    <button onclick="selectLanguage('en')">English</button>
+    <button onclick="selectLanguage('fr')">French</button>
+    <script>
+        function selectLanguage(language) {
+            fetch(`http://localhost:8080/generate?language=${language}`)
+                .then(response => response.json())
+                .then(data => alert('Report generated: ' + data.reportPath))
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
